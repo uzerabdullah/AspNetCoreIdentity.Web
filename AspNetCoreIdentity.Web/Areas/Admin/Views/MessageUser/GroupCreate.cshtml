@@ -1,0 +1,49 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@model UserGroup
+
+
+<div class="row">
+    <div class="col-md-6 offset-3">
+        <h2>Üye Grubu Oluştur</h2>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success col-md-6 offset-3" role="alert">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger col-md-6 offset-3" role="alert">
+        </div>
+
+        <form asp-controller="MessageUser" asp-action="GroupCreate" method="post">
+            <div class="row mb-3">
+                <label for="Password" class="col-md-4 col-form-label" asp-for="GroupName"></label>
+                <div class="col-md-8">
+                    <input asp-for="GroupName" class="form-control">
+                    <span asp-validation-for="GroupName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-8 offset-md-4">
+                    <button type="submit" class="btn btn-primary">Ekle</button>
+                </div>
+            </div>
+
+        </form>
+        <div class="mt-3">
+            <a asp-action="Index">Üye Grup Listesi </a>
+        </div>
+    </div>
+</div>
+
+@* Servera gitmeden daha client gerekli validasyon kontroli yapılması *@
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

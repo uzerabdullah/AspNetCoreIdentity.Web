@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@model UserViewModel
+
+<div class="row">
+    <div class="col-md-4 offset-md-4 text-center">
+
+        <user-picture-tumbnail class="rounded" style="width:300px" picture-url="@Model.PhotoUrl"></user-picture-tumbnail>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1>Kullanıcı Bilgileri</h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Kullanıcı Adı</th>
+                    <th>Email</th>
+                    <th>Telefon</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>
+                    @Model.UserName
+                </td>
+                <td>
+                    @Model.Email
+                </td>
+                <td>
+                    @Model.PhoneNumber
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h3>Gelen Mesaj Listesi</h3>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Mesaj</th>
+                    <th>Tarih</th>
+                    <th>Grup Mesajı Mı</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model.MessagesList)
+            {
+                <tr>
+                    <th>@item.Message</th>
+                    <th>@item.CreateDate.ToString("dd/MM/yyyy")</th>
+                    <th>@item.GroupMessage</th>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

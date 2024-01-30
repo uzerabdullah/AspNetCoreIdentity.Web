@@ -1,0 +1,51 @@
+﻿@{
+    Layout = null;
+}
+@model SignUpViewModel
+<link href="~/css/login.css" rel="stylesheet" />
+
+<div asp-validation-summary="ModelOnly" class="alert alert-danger col-md-6 offset-3" role="alert">
+</div>
+
+<div class="login-container">
+    <form asp-controller="Home" asp-action="SignUp" method="post" class="form-login">
+        <ul class="login-nav">
+            <li class="login-nav__item active">
+                <a href="#">Kullanıcı Kayıt Ekranı</a>
+            </li>
+        </ul>
+        <label for="UserName" class="login__label" asp-for="UserName"></label>
+        <input asp-for="UserName" class="login__input">
+        <span asp-validation-for="UserName" class="text-danger" style="color:wheat"></span>
+
+        <label for="Mail" class="login__label" asp-for="Mail"></label>
+        <input asp-for="Mail" class="login__input">
+        <span asp-validation-for="Mail" class="text-danger" style="color:wheat"></span>
+
+        <label for="Phone" class="login__label" asp-for="Phone"></label>
+        <input asp-for="Phone" class="login__input">
+        <span asp-validation-for="Phone" class="text-danger" style="color:wheat"></span>
+
+        <label for="Password" class="login__label" asp-for="Password"></label>
+        <input asp-for="Password" class="login__input">
+        <span asp-validation-for="Password" class="text-danger" style="color:wheat"></span>
+
+        <label for="PasswordConfirm" class="login__label" asp-for="PasswordConfirm"></label>
+        <input asp-for="PasswordConfirm" class="login__input">
+        <span asp-validation-for="PasswordConfirm" class="text-danger" style="color:wheat"></span>
+
+        <div class="row mb-3">
+            <div class="col-md-8 offset-md-4">
+                <button type="submit" class="login__submit">Üye Ol</button>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@model List<AdminModel.UserViewModel>
+<h2>Üye Listesi</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Kullanıcı Adı</td>
+            <td>E-Mail</td>
+            <td>Gruplar</td>
+            <td>Grup İşlemleri</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Email</td>
+                <td> <user-group-names user-id="@item.Id"></user-group-names> </td>
+                <td> <a class="btn btn-dark" asp-controller="MessageUser" asp-action="AssignGroupToUser" asp-area="Admin" asp-route-id="@item.Id">Grup Ata</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+

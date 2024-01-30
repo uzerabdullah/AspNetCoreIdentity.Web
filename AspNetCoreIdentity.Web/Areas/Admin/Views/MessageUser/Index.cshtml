@@ -1,0 +1,53 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@model List<UserGroup>
+
+
+<div class="row">
+    <div class="col-md-10">
+        <h2>Üye Grup Listesi</h2>
+    </div>
+    <div class="col-md-2">
+        <a class="btn btn-primary" asp-controller="MessageUser" asp-action="GroupCreate" asp-area="Admin">Üye Grubu Ekle</a>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-md-8 offset-md-2">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success col-md-6 offset-3" role="alert">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Grup Adı</td>
+                    <td colspan="2">İşlem</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.GroupName</td>
+                        <td> <a class="btn btn-warning" asp-controller="MessageUser" asp-action="GroupUpdate" asp-area="Admin" asp-route-id="@item.Id">Güncelle</a></td>
+                        <td> <a class="btn btn-danger" asp-controller="MessageUser" asp-action="GroupDelete" asp-area="Admin" asp-route-id="@item.Id">Sil</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+
+
+
